@@ -1,0 +1,160 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MyCourse.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> — мое приложение ASP.NET</title>
+    <asp:PlaceHolder runat="server">     
+          <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>  
+    <webopt:BundleReference runat="server" Path="~/Content/css" /> 
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=272931&clcid=0x409 --%>
+            <%--Framework Scripts--%>
+            
+            <asp:ScriptReference Name="MsAjaxBundle" />
+            <asp:ScriptReference Name="jquery" />
+            <asp:ScriptReference Name="jquery.ui.combined" />
+            <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+            <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+            <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+            <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+            <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+            <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+            <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+            <asp:ScriptReference Name="WebFormsBundle" />
+            <%--Site Scripts--%>
+
+        </Scripts>
+    </asp:ScriptManager>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">
+                    <a runat="server" href="~/"><!--   <img src="1.jpg">  -->ваша эмблема здесь</a>
+                </p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul>
+                                <li><a id="registerLink" runat="server" href="~/Account/Register">Зарегистрироваться</a></li>
+                                <li><a id="loginLink" runat="server" href="~/Account/Login">Вход</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <p>
+                                Привет, <a runat="server" class="username" href="~/Account/Manage" title="Manage your account">
+                                    <asp:LoginName runat="server" CssClass="username" /></a>!
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Выход" LogoutPageUrl="~/" />
+                            </p>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </section><nav><div class="menu">
+                    <asp:Menu class="Menu1" runat="server" StaticEnableDefaultPopOutImage="false" DynamicHorizontalOffset="2" Font-Names="Arial" Font-Size="medium" Orientation="Horizontal" StaticSubMenuIndent="10px" Width="1200px">
+
+<DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+
+<Items>
+<asp:MenuItem NavigateUrl="~/" Text="Домашняя" Value="Домашняя"></asp:MenuItem>
+<asp:MenuItem Text="Инспектор" Value="Инспектора">
+<asp:MenuItem NavigateUrl="~/Post.aspx" Text="Должности" Value="Должности"></asp:MenuItem>
+<asp:MenuItem NavigateUrl="~/Records.aspx" Text="Послужной список" Value="Послужной список"></asp:MenuItem>
+<asp:MenuItem NavigateUrl="~/Employees.aspx" Text="Сотрудники" Value="Сотрудники"></asp:MenuItem>
+</asp:MenuItem>
+
+<asp:MenuItem Text="Нарушения" Value="Нарушения">
+<asp:MenuItem NavigateUrl="~/Types_of_violations.aspx" Text="Виды нарушения" Value="Виды нарушения"></asp:MenuItem>
+<asp:MenuItem NavigateUrl="~/Penalties.aspx" Text="Штрафные санкции" Value="Штрафные санкции"></asp:MenuItem>
+</asp:MenuItem>
+
+<asp:MenuItem Text="Проверки" Value="Проверки">
+<asp:MenuItem NavigateUrl="~/Companies.aspx" Text="Предприятия" Value="Предприятия"></asp:MenuItem>
+<asp:MenuItem NavigateUrl="~/Checks.aspx" Text="Проверки" Value="Проверки"></asp:MenuItem>
+</asp:MenuItem>
+</Items>
+<StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+</asp:Menu>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--!
+                    <ul class="dropdown">
+                        <li class="dropdown-top">
+                            <a class="dropdown-top" href="/">Home</a>
+                            <ul class="dropdown-inside">
+                           <li><a  href="~/about">Сотрудники</a></li>
+                        <li><a runat="server" href="~/Separations">Отделение</a></li> 
+                                </ul></li>
+                        <a class="dropdown-top" href="/">Home</a>
+                            <ul class="dropdown-inside">
+                           <li><a  href="~/Officers">Сотрудники</a></li>
+                        <li><a runat="server" href="~/Separations">Отделение</a></li> 
+                                </ul></li>
+                    </ul>
+                    <ul id="menu">
+                        <li><a runat="server" href="~/">Домашняя</a></li>
+                         <li><a runat="server" href="~/Officers">Сотрудники</a></li>
+                        <li><a runat="server" href="~/Separations">Отделение</a></li> 
+                        <li><a runat="server" href="~/Patients">Пациенты</a></li>
+                         <li><a runat="server" href="~/Services">Услуги</a></li>
+                        <li><a runat="server" href="~/MedicineCards">Медицинская карта</a></li>
+                        <li><a runat="server" href="~/Job_titles">Должности</a></li>
+                    </ul> -->
+                </div></nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" >
+            <div class="tree">
+                </div>
+            <div class="def" align="center">
+                <h3> <ul id="men">
+<li>    Гомельская областная больница </ul></h3>
+        </div>
+        </asp:ContentPlaceHolder>
+        <section class=" clear-fix">
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; <%: DateTime.Now.Year %> - мое приложение ASP.NET</p>
+            </div>
+        </div>
+    </footer>
+    </form>
+</body>
+</html>
+
